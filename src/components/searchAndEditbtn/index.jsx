@@ -13,7 +13,7 @@ export default function EditAndDelete() {
           <Button  variant="outlined" endIcon={<DeleteIcon />} color="error">
               Delete 
       </Button>
-      <Link style={{textDecoration: 'none',color:"#FFFFFF"}} to="/edit">
+      <Link style={{textDecoration: 'none',color:"#FFFFFF"}} to="/#/edit">
         <Button variant="contained" endIcon={<EditIcon />} color="success" >
                 Edit
         </Button>
