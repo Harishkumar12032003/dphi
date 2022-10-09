@@ -176,7 +176,7 @@ export function Create(props){
         </Text>
        
         <Btns>
-            <Link style={{textDecoration: 'none',color:"#FFFFFF"}} to="/" onClick={() => {window.location.href="/"}}>
+            <Link style={{textDecoration: 'none',color:"#FFFFFF"}} to="/">
                 <ButtonVariants data="Create Challenge"></ButtonVariants>
             </Link>
         </Btns>
