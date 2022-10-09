@@ -103,7 +103,7 @@ export function TopSection(props){
                  <SloganText1>
                  competitions.
                 </SloganText1>
-                <Link to="/#/create">
+                <Link to="/create">
                     <Buttons>Create Challenge</Buttons>
                 </Link>
                 
