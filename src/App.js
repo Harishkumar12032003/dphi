@@ -13,7 +13,7 @@ function App() {
     
    
 
-    
+      <div className='App'>
       <Routes>
       <Route exact path="/" element={<HomePage />}/>
           <Route  path="/create"  element={<Create />}/>
@@ -21,7 +21,7 @@ function App() {
           <Route  path="/edit"  element={<Edit />}/>
       
       </Routes>
-     
+      </div>
      
       
      
