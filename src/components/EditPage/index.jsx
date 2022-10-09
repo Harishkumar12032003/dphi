@@ -154,7 +154,7 @@ export function Edit(props){
         </Text>
         <Text>
             <Btns>
-                <Link style={{textDecoration: 'none',color:"#FFFFFF"}} to="/">
+                <Link style={{textDecoration: 'none',color:"#FFFFFF"}} to="/dphi">
                 <ButtonVariants data="Save Changes"></ButtonVariants>
                 </Link>
             </Btns>
