@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/dphi/static/css/main.325fa83a.css",
-    "main.js": "/dphi/static/js/main.d83b3c60.js",
+    "main.js": "/dphi/static/js/main.fb9a5c27.js",
     "static/js/787.28cb0dcd.chunk.js": "/dphi/static/js/787.28cb0dcd.chunk.js",
     "static/media/PicsArt_04-14-04.42 1.svg": "/dphi/static/media/PicsArt_04-14-04.42 1.9a6fb5c2eb8050d07337d64e4df7c934.svg",
     "static/media/Group 1000002466.png": "/dphi/static/media/Group 1000002466.a6d8598ea73d4bf37f9f.png",
@@ -15,11 +15,11 @@
     "static/media/Group 1000002515.svg": "/dphi/static/media/Group 1000002515.5689f05507f9881cd46df8fa85fb6661.svg",
     "static/media/carbon_notebook-reference.svg": "/dphi/static/media/carbon_notebook-reference.85f4cfac6336f1d07eddab99d8df0b3a.svg",
     "main.325fa83a.css.map": "/dphi/static/css/main.325fa83a.css.map",
-    "main.d83b3c60.js.map": "/dphi/static/js/main.d83b3c60.js.map",
+    "main.fb9a5c27.js.map": "/dphi/static/js/main.fb9a5c27.js.map",
     "787.28cb0dcd.chunk.js.map": "/dphi/static/js/787.28cb0dcd.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.325fa83a.css",
-    "static/js/main.d83b3c60.js"
+    "static/js/main.fb9a5c27.js"
   ]
 }
