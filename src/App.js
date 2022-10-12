@@ -8,23 +8,22 @@ import { Detail } from './containers/DetailPage';
 import { Edit } from './components/EditPage';
 import {Test} from '../src/test/index';
 import {Route2} from '../src/test/index'
-function App() {
-  return (
-    
-   
+import { useState } from 'react';
 
+function App() {
+
+
+
+  return (
       <div className='App'>
       <Routes>
       <Route exact path="/" element={<HomePage />}/>
           <Route  path="/create"  element={<Create />}/>
-          <Route  path="/details" element={<Detail />}/>
-          <Route  path="/edit"  element={<Edit />}/>
+          <Route  path="/details/:id" element={<Detail />}/>
+          <Route  path="/edit/:id"  element={<Edit />}/>
       
       </Routes>
       </div>
-     
-      
-     
   );
 }
 

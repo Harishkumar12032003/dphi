@@ -1,0 +1,88 @@
+{
+  "employees": [
+    {
+      "id": 2,
+      "thumbnail": "cardimage/Group 1000002766.png",
+      "status": "upcoming",
+      "title": "Data Sprint 72 - Butterfly Identification",
+      "statustime": "starts in",
+      "time": "00  :  12  :  34",
+      "unit": "Days  Hours  Mins",
+      "level": "easy"
+    },
+    {
+      "id": 5,
+      "thumbnail": "cardimage/Group 1000002773.png",
+      "status": "past",
+      "title": "Engineering Graduates Employment Outcomes",
+      "statustime": "ended on",
+      "time": "16th May'22 09:00 PM",
+      "unit": "",
+      "level": "easy"
+    },
+    {
+      "id": 6,
+      "thumbnail": "cardimage/Group 1000002466.png",
+      "status": "past",
+      "title": "Travel Insurance Claim Prediction",
+      "statustime": "ended on",
+      "time": "16th May'22 09:00 PM",
+      "unit": "",
+      "level": "easy"
+    },
+    {
+      "id": 7
+    },
+    {
+      "id": 8
+    },
+    {
+      "id": 9
+    },
+    {
+      "id": 10
+    },
+    {
+      "id": 11
+    },
+    {
+      "id": 12
+    },
+    {
+      "id": 13
+    },
+    {
+      "id": 14
+    },
+    {
+      "id": 15
+    },
+    {
+      "id": 16
+    },
+    {
+      "id": 17
+    },
+    {
+      "id": 18
+    },
+    {
+      "id": 19
+    },
+    {
+      "id": 20
+    },
+    {
+      "id": 21
+    },
+    {
+      "id": 22
+    },
+    {
+      "id": 23
+    },
+    {
+      "id": 24
+    }
+  ]
+}

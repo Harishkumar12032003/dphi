@@ -1,10 +1,13 @@
-import React from 'react';
+import React,{useState,useEffect} from 'react';
 import styled from 'styled-components';
 import { Navbar } from '../../components/button/navbar';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import Level from "../../images/assets/icons/Vector.png";
 import EditAndDelete from '../../components/searchAndEditbtn';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
+import Records from '../../records.json';
+import Db from '../../db.json';
+import { getData } from '../../components/dataHandler';
 
 const Container=styled.div`
     padding-bottom:50px;
@@ -41,11 +44,11 @@ const Icons=styled.div`
 `;
 
 const  Title=styled.div`
-    width: 818px;
+    width:1000px;
     height: 48px;
     margin-left: -15px;
     margin-top:50px;
-
+    margin-bottom:5px;
     font-family: 'Poppins';
     font-style: normal;
     font-weight: 600;
@@ -181,31 +184,43 @@ const Texts=styled.div`
 
 
 export function Detail(props){
-  
+    const {id} = useParams();
+    const [data,setData] = useState();
+    
+    useEffect(() => {
+        for (let key in getData()){
+            if(getData()[key].id == id){
+                setData(getData()[key]);
+                break;
+            }
+        }
+        console.log(data)
+    },[]);
+
 
     return<Container>
         <Navbar></Navbar>
-        <TopContainer>
+        {data ? <div>
+            <TopContainer>
             <TopInnerContainer>
                 <Icons>
                 <Margins>
                     <AccessTimeIcon/>
                     <Texts>
-                    Starts on 17th Jun'22 09:00 PM (India Standard Time) 
+                    Starts in {data.time} (India Standard Time) 
                     </Texts>
                 </Margins>
                  
                 </Icons>
                <Title>
-
-               Data Sprint 72 - Butterfly Identification
+               {data.title}
                </Title>
 
                <Title2>
-               Identify the class to which each butterfly belongs to
+               Lorem ipsum dolor sit amet consectetur adipisicing elit.
                </Title2>
                 <Box>
-                    <img src={Level} alt="levels"/>  Easy
+                    <img src={Level} alt="levels"/>  {data.level}
                 </Box>
             </TopInnerContainer>
         </TopContainer>
@@ -216,20 +231,21 @@ export function Detail(props){
                 <Lines></Lines>
             </OverView>
             <Btns>
-                <EditAndDelete></EditAndDelete>
+                <EditAndDelete data={id}></EditAndDelete>
             </Btns>
            
     
         </MiddleContainer>
 
         <Description>
-        Butterflies are the adult flying stage of certain insects belonging to an order or group called Lepidoptera. The word "Lepidoptera" means "scaly wings" in Greek. This name perfectly suits the insects in this group because their wings are covered with thousands of tiny scales overlapping in rows.
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptate, fugiat laudantium suscipit mollitia magni accusamus facilis placeat accusantium sed doloribus dicta odio! Ex voluptatum rem omnis reiciendis illo tempora sunt.
         </Description>
         <Description>
-        An agency of the Governmental Wildlife Conservation is planning to implement an automated system based on computer vision so that it can identify butterflies based on captured images. As a consultant for this project, you are responsible for developing an efficient model.
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laborum, facere modi. Praesentium animi, consectetur velit, dolorem impedit iusto iure qui ullam provident harum possimus officiis, commodi explicabo adipisci doloribus ducimus!
         </Description>
         <Description>
-         Your Task is to build an Image Classification Model using CNN that classifies to which class of weather  each image belongs to.
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas eaque reiciendis impedit blanditiis explicabo recusandae, neque voluptate sapiente distinctio vel? Similique, repudiandae. Illum, quis dolor repellat quo ipsa quod officiis?
         </Description>
+        </div> : <div>Data not found</div>}
     </Container>
 }

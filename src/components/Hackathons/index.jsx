@@ -6,8 +6,10 @@ import ButtonIcons from "../status";
 import IconButtons from "../participatebtn";
 import { useSelector } from "react-redux";
 import Records from "../../records.json";
+import Db from "../../db.json";
 import { Link } from "react-router-dom";
 import { color } from "@mui/system";
+import { getData } from "../dataHandler";
 
 const Container=styled.div`
     width: 100%;
@@ -142,10 +144,13 @@ const FilterButton=styled.div`
 export function HackCard(props) {
     const {name}=useSelector((state)=>state.counter);
     
-    const [items, setItems] = useState(Records);
+   /* const [items, setItems] = useState(Records);
+   Records-->Db.employess
+   */
+    const [items,setItems]=useState(getData());
     
-    const filterItem = (categItem) => {
-        const updatedItems = Records.filter((curElem) => {
+   const filterItem = (categItem) => {
+        const updatedItems = getData().filter((curElem) => {
             return curElem.status === categItem;
         });
     
@@ -153,7 +158,7 @@ export function HackCard(props) {
     }
 
     const filterItemLevel = (categItem) => {
-        const updatedItems = Records.filter((curElem) => {
+        const updatedItems =  getData().filter((curElem) => {
             return curElem.level === categItem;
         });
     
@@ -161,9 +166,10 @@ export function HackCard(props) {
     }
 
     useEffect(()=>{
-        const updatedItems = Records.filter((record) => {
-          
-            return record.title.toLowerCase().includes({name}.name.toLowerCase())
+        const updatedItems =  getData().filter((curElem) => {
+          if(curElem.title!=undefined){
+            return curElem.title.toLowerCase().includes({name}.name.toLowerCase())
+          }
         });
     
         setItems(updatedItems);
@@ -175,47 +181,42 @@ export function HackCard(props) {
   return (
     
     <Container>
+    <FilterBtn>
+            <FilterButton>
+            <button className="btn btn-secondary"  onClick={() => setItems(getData())}  >All</button>
+            </FilterButton>
+            <FilterButton>
+            <button className="btn btn-light" onClick={() => filterItem('upcoming')}>Upcoming</button>
+            </FilterButton>
             
-            <FilterBtn>
-                <FilterButton>
-                    <button className="btn btn-secondary"  onClick={() => setItems(Records)}  >All</button>
-                    </FilterButton>
-                    
-                    <FilterButton>
-                    <button className="btn btn-light" onClick={() => filterItem('upcoming')}>Upcoming</button>
-                    </FilterButton>
-                    
-                    <FilterButton>
-                    <button className="btn btn-light"  onClick={() => filterItem('active')}>Active</button>
-                    </FilterButton>
-                    
-                    <FilterButton>
-                    <button className="btn btn-light" onClick={() => filterItem('past')}>Past</button>
-                    </FilterButton>
-                    
-                    <FilterButton>
-                    <button className="btn btn-light" onClick={() => filterItemLevel('easy')} >Easy</button>
-                    </FilterButton>
-                    
-                    <FilterButton>
-                    <button className="btn btn-light" onClick={() => filterItemLevel('medium')} >Medium</button>
-                    </FilterButton>
-                    
-                    <FilterButton>
-                    <button className="btn btn-light" onClick={() => filterItemLevel('hard')} >Hard</button>
-               </FilterButton>
-                    
+            <FilterButton>
+            <button className="btn btn-light"  onClick={() => filterItem('active')}>Active</button>
+            </FilterButton>
+            
+            <FilterButton>
+            <button className="btn btn-light" onClick={() => filterItem('past')}>Past</button>
+            </FilterButton>
+            <FilterButton>
+                <button className="btn btn-light" onClick={() => filterItemLevel('easy')} >Easy</button>
+            </FilterButton>
                 
-            </FilterBtn>
+            <FilterButton>
+                <button className="btn btn-light" onClick={() => filterItemLevel('medium')} >Medium</button>
+            </FilterButton>
+                
+            <FilterButton>
+                <button className="btn btn-light" onClick={() => filterItemLevel('hard')} >Hard</button>
+            </FilterButton>
+    
 
-
-
-
+</FilterBtn>
+           
         {
         
         
         items.map((elem) => {
-               
+            console.log(elem.title);
+              if(elem.title!=undefined) {
                 return(
                     <div key={elem.id}>
                         <CardContainer>
@@ -238,13 +239,13 @@ export function HackCard(props) {
                             <TimeUnit>{elem.unit}</TimeUnit>
 
                             <Participate>
-                                <Link style={{textDecoration: 'none',color:"#FFFFFF"}} to='/details' > <IconButtons></IconButtons> </Link>
+                                <Link style={{textDecoration: 'none',color:"#FFFFFF"}} to={`/details/${elem.id}`}> <IconButtons></IconButtons> </Link>
                             </Participate>
                             
                         
                         </CardContainer>
                     </div>
-                )
+                )}
             })
         }
 
@@ -252,4 +253,10 @@ export function HackCard(props) {
     
   );
 }
+
+
+
+
+
+
 

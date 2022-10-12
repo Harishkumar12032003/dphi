@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import RocketImg from '../../images/assets/icons/PicsArt_04-14-04.42 1.svg';
 import { Buttons } from '../../components/button';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 
 const TopSectionContainer=styled.div`
     width:100%;
@@ -79,12 +80,12 @@ const LogoContainer=styled.div`
 
 
 export function TopSection(props){
+   
     return <div>
         <TopSectionContainer>
             <TopSectionInnerContainer>
                 <Line></Line>
                 <LogoContainer>
-                  
                 <SloganText>
                 Accelerate Innovation 
                 </SloganText>  

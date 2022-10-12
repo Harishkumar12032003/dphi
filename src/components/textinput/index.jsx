@@ -20,6 +20,7 @@ export default function TextFieldComposition(props) {
       <In>
         <Input placeholder=''
         value={props.data}
+        onChange
         />
       </In>
      
