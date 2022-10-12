@@ -150,27 +150,27 @@ export function Create(props){
     const[status,processStatus]=useState("upcoming");
     const[unit,processUnit]=useState("date");
   
-    const getHackInfo=()=>{
+    // const getHackInfo=()=>{
         
        
-      const url="http://localhost:9000/employees/";
+    //   const url="http://localhost:9000/employees/";
 
-      axios.post(url).then(response=>{
-        processLevel(response.data.level);
-        processThumbnail(response.data.thumbnail);
-        processTime(response.data.time);
-        processTitle(response.data.title);
-        processStatusTime(response.data.time>time?"starts on":"ended on");
-        processStatus("upcoming");
-        processUnit("days");
-      }, {
+    //   axios.post(url).then(response=>{
+    //     processLevel(response.data.level);
+    //     processThumbnail(response.data.thumbnail);
+    //     processTime(response.data.time);
+    //     processTitle(response.data.title);
+    //     processStatusTime(response.data.time>time?"starts on":"ended on");
+    //     processStatus("upcoming");
+    //     processUnit("days");
+    //   }, {
        
-      })
-    }
+    //   })
+    // }
   
-    useEffect(()=>{
-      getHackInfo();
-    },[true])
+    // useEffect(()=>{
+    //   getHackInfo();
+    // },[true])
   
     const updateHack=()=>{
         let currentDate = new Date();
@@ -227,16 +227,16 @@ export function Create(props){
         </Dates>
 
         <TextAreas>
-        <p><label for="w3review">Description</label></p>
+        <p><label>Description</label></p>
 
-        <textarea id="w3review" name="w3review" rows="4" cols="50">
+        <textarea id="w3review" rows="4" cols="50">
         
         </textarea>
         </TextAreas>
       
 
        <Name>
-            <label for="myfile" >Image:</label> 
+            <label  >Image:</label> 
             <label>url of the image</label>  
         </Name>
 
@@ -249,7 +249,7 @@ export function Create(props){
         </Btn>
 
         <Level>
-            <label for="level">Level</label>
+            <label >Level</label>
             <br></br>
             <select name="level" id="level" value={level} onChange={obj=>processLevel(obj.target.value)} >
               <option value="easy" >Easy</option>
@@ -262,9 +262,9 @@ export function Create(props){
             <Btns>
                 <Link style={{textDecoration: 'none',color:"#FFFFFF"}} to="/dphi">
                
-                <th colSpan={2}>
+                
             <button onClick={updateHack} style={{backgroundColor:'#44924C',border:"none"}}>submit</button>
-        </th>
+        
                 </Link>
             </Btns>
         </Text>

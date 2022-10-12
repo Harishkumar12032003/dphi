@@ -25,7 +25,7 @@ export default function EditAndDelete(props) {
 
   return (
     <Stack direction="row" spacing={4}>
-      <Link to={`/`}>
+      <Link to='/'>
     <Button  variant="outlined" endIcon={<DeleteIcon />} color="error" onClick={handleDelete}>
         Delete 
     </Button>
