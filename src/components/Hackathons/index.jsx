@@ -248,18 +248,20 @@ export function HackCard(props) {
                             
                             <NameOfHack>
                             {elem.title}
+                        
                             </NameOfHack>
 
                             <Starts>
-                               {elem.statustime}
+                               {/* {elem.statustime} */}
+                               starts in
                             </Starts>
-                            <h4 style={{ margin: 3,marginTop:5 ,color:'#454545' }}>{elem.time}</h4>
+                            {/* <h4 style={{ margin: 3,marginTop:5 ,color:'#454545' }}>{elem.time}</h4> */}
                            <h4>
 
                                 <Countdown date={Date.now() + count} />
 
                            </h4>
-                            <TimeUnit>{elem.unit}</TimeUnit>
+                            <TimeUnit>days hours mins secs</TimeUnit>
 
                             <Participate>
                                 <Link style={{textDecoration: 'none',color:"#FFFFFF"}} to={`/details/${elem.id}`}> <IconButtons></IconButtons> </Link>

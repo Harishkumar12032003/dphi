@@ -98,7 +98,7 @@ const Name=styled.div`
 `;
 
 const Btn=styled.div`
-   background:#D8D8D8;
+ 
    border-radius:10px;
    width:50px;
    
@@ -127,6 +127,7 @@ const Text3=styled.div`
     line-height: 22px;
     color: #666666;
     margin-right:10px;
+    width:150px;
 `;
 
 
@@ -159,7 +160,11 @@ export function Create(props){
     const[start_Date,processStartDate]=useState("");
     const[end_Date,processEndDate]=useState("");
     const[images, setImages] = React.useState([]);
+    const[show,setShow]=useState("");
     const maxNumber = 1;
+
+
+  
 
     const onChange = (imageList, addUpdateIndex) => {
         // data for submit
@@ -268,7 +273,6 @@ export function Create(props){
 
        <Name>
             <label  >Image:</label> 
-            <label>url of the image</label>  
         </Name>
 
         <Btn>
@@ -291,7 +295,7 @@ export function Create(props){
                     onClick={onImageUpload}
                     {...dragProps}
                     >
-                    Click or Drop here
+                    Upload Image here
                     </button>
                     {imageList.map((image, index) => (
                         
@@ -327,8 +331,10 @@ export function Create(props){
                 {/* <Link style={{textDecoration: 'none',color:"#FFFFFF"}} to="/"> */}
                
                 
-            <button onClick={updateHack}style={{backgroundColor:'#44924C',border:"none"}}>submit</button>
-        
+            {/* <button onClick={updateHack}style={{backgroundColor:'#44924C',border:"none"}}>submit</button> */}
+                
+            <button type="submit" onClick={updateHack} style={{backgroundColor:'#44924C',border:"none"}} disabled={(title===''?true:false)||(description===''?true:false)||(thumbnail===''?true:false)||(start_Date===''?true:false)||(end_Date===''?true:false)}>submit</button>
+
                 {/* </Link> */}
             </Btns>
         </Text>

@@ -18,6 +18,7 @@ import FormLabel from '@mui/joy/FormLabel';
 import ImageUploading from 'react-images-uploading';
 import CloudIcon from '@mui/icons-material/CloudUploadRounded';
 import { red } from '@mui/material/colors';
+import { useNavigate } from 'react-router-dom';
 
 const Head=styled.div`
     width: 100%;
@@ -116,6 +117,7 @@ const Text3=styled.div`
     line-height: 22px;
     color: #666666;
     margin-right:10px;
+    width:150px;
 `;
 
 const TextAreas=styled.div`
@@ -144,13 +146,17 @@ export function Edit(props){
   const[start_Date,processStartDate]=useState("");
   const[end_Date,processEndDate]=useState("");
   const[images, setImages] = React.useState([]);
+  
     const maxNumber = 1;
 
     const onChange = (imageList, addUpdateIndex) => {
         // data for submit
-        console.log(imageList, addUpdateIndex);
+        // console.log(imageList, addUpdateIndex);
+        // setImages(imageList);
+        processThumbnail(imageList[0]["data_url"]);
         setImages(imageList);
     };
+    let navigate = useNavigate()
 
   const getHackInfo=()=>{
       
@@ -178,7 +184,8 @@ export function Edit(props){
     getHackInfo();
   },[true])
 
-  const updateHack=()=>{
+  const updateHack=(e)=>{
+    e.preventDefault()
       let currentDate = new Date();
       let time1 = currentDate.getHours() + ":" + currentDate.getMinutes() + ":" + currentDate.getSeconds();
     var hackInfo={
@@ -198,7 +205,7 @@ export function Edit(props){
     // axios.put(url,hackInfo).then(response=>{
     //   processMessage((title+"details updated"));
     // })
-
+    navigate('/')
   }
 
   return<PageContainer>
@@ -224,39 +231,41 @@ export function Edit(props){
       </Text1>
       <Dates>
       
-        <label >Start Date:</label>
-        <br></br>
-        <input type="datetime-local" value={time} onChange={obj=>processTime(obj.target.value)} ></input>
-        <br></br>
-        <br></br>
-        <label >End Date:</label>
-        
-        <br></br>
-        <input type="datetime-local" value={end_Date} onChange={obj=>processEndDate(obj.target.value) }></input>
+      <label >Start Date:</label>
+          <br></br>
+          <input type="date" value={start_Date} onChange={obj=>processStartDate(obj.target.value)} required></input>
+          <br></br>
+          <br></br>
+          <label >End Date:</label>
+          
+          <br></br>
+          <input type="date" value={end_Date} onChange={obj=>processEndDate(obj.target.value) } required></input>
       </Dates>
 
       <TextAreas>
       <p><label>Description</label></p>
 
       <textarea 
-      id="w3review" rows="4" cols="50"
-      value={description}
-      onChange={obj=>processDescription(obj.target.value)}
-      >
-
+         rows="4" cols="50"
+        value={description}
+        onChange={obj=>processDescription(obj.target.value)}
+        required
+        >
       </textarea>
       </TextAreas>
     
 
-     <Name>
-          <label for="myfile" >Image:url of the image</label> 
-      </Name>
-      <Btn>
-     
-          <Text3>
+      <Name>
+            <label  >Image:</label> 
           
-          <input type="url" id="thumbnail" name="thumbnail" onChange={obj=>processThumbnail(obj.target.value)}></input>
-          <ImageUploading
+        </Name>
+
+        <Btn>
+        
+            <Text3>
+            
+            
+            <ImageUploading
                 multiple
                 value={images}
                 onChange={onChange}
@@ -277,7 +286,7 @@ export function Edit(props){
                         
                         <div key={index} className="image-item">
                             <img src={image['data_url']} alt="" width="100" />
-                            {console.log(image['data_url'])}
+                            
                             <div className="image-item__btn-wrapper">
                             <button onClick={() => onImageUpdate(index)}>Update</button>
                             <button onClick={() => onImageRemove(index)}>Remove</button>
@@ -287,11 +296,10 @@ export function Edit(props){
                 </div>
         )}
       </ImageUploading>
-
-          </Text3>  
      
-      </Btn>
-
+            </Text3>  
+       
+        </Btn>
       <Level>
           <label for="level">Level</label>
           <br></br>
@@ -304,12 +312,12 @@ export function Edit(props){
 
       <Text>
           <Btns>
-              <Link style={{textDecoration: 'none',color:"#FFFFFF"}} to="/">
+              {/* <Link style={{textDecoration: 'none',color:"#FFFFFF"}} to="/"> */}
              
-              <th colSpan={2}>
+            
           <button onClick={updateHack} style={{backgroundColor:'#44924C',border:"none"}}>submit</button>
-      </th>
-              </Link>
+      
+              {/* </Link> */}
           </Btns>
       </Text>
 
