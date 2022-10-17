@@ -177,7 +177,7 @@ export function HackCard(props) {
     },[name])
 
     
-
+    
         
         
     
@@ -224,7 +224,9 @@ export function HackCard(props) {
             // console.log(new Date());
             const curr_time = Date.parse(new Date());
             const start_time=Date.parse(elem.start_date);
+            const end_time=Date.parse(elem.end_date);
             const count=start_time-curr_time;
+            const count1=end_time-curr_time;
             //console.log(start_time-curr_time);
             //timer logic
             // const date1 = new Date(elem.start_date);
@@ -252,16 +254,113 @@ export function HackCard(props) {
                             </NameOfHack>
 
                             <Starts>
-                               {/* {elem.statustime} */}
-                               starts in
+                            {(() => {
+
+                                            if (elem.status == "upcoming") {
+
+                                            return (
+
+                                                <div>starts in</div>
+
+                                            )
+
+                                            } else if (elem.status == "active") {
+
+                                            return (
+
+                                                <div>ends in</div>
+
+                                            )
+
+                                            } else {
+
+                                            return (
+
+                                                <div>ended on</div>
+
+                                            )
+
+                                            }
+
+                    })()}
+                               
                             </Starts>
                             {/* <h4 style={{ margin: 3,marginTop:5 ,color:'#454545' }}>{elem.time}</h4> */}
                            <h4>
 
-                                <Countdown date={Date.now() + count} />
+                                {/* <Countdown date={Date.now() + count} /> */}
+
+                                {(() => {
+
+                                    if (elem.status == "upcoming") {
+
+                                    return (
+
+                                        <Countdown date={Date.now() + count} />
+
+                                    )
+
+                                    } else if (elem.status == "active") {
+
+                                    return (
+
+                                        <Countdown date={Date.now() + count1} />
+
+                                    )
+
+                                    } else {
+
+                                    return (
+
+                                        <div>{elem.end_date}</div>
+
+                                    )
+
+                                    }
+
+                                    })()}
 
                            </h4>
-                            <TimeUnit>days hours mins secs</TimeUnit>
+                            <TimeUnit>
+                                
+                               
+                                {(() => {
+
+                                        if (elem.status == "upcoming") {
+
+                                        return (
+
+                                            <div>
+                                                    days hours mins secs
+                                            </div>
+
+                                        )
+
+                                        } else if (elem.status == "active") {
+
+                                        return (
+
+                                            <div>
+                                            days hours mins secs
+                                    </div>
+
+                                        )
+
+                                        } else {
+
+                                        return (
+
+                                            <div>
+                                            month date year
+                                    </div>
+
+                                        )
+
+                                        }
+
+                                        })()}
+                                
+                                </TimeUnit>
 
                             <Participate>
                                 <Link style={{textDecoration: 'none',color:"#FFFFFF"}} to={`/details/${elem.id}`}> <IconButtons></IconButtons> </Link>

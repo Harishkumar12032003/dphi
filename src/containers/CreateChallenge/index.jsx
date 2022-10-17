@@ -206,7 +206,7 @@ export function Create(props){
         "level":level,
         "thumbnail":thumbnail,
         "time":time,
-        "status":time1<time?"upcoming":"past",
+        "status":(time1<time)?"past":"upcoming",
         "unit":"date             time",
         "statustime":status=="upcoming"?"starts on":"ended on",
         "description":description,
