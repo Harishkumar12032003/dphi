@@ -58,7 +58,7 @@ export function Search(props){
             </Head>
             <Filter>
            <SearchBar></SearchBar>
-           <Btn>
+           {/* <Btn>
            <div className="dropdown" >
                 <button className="btn btn-light dropdown-toggle" type="button" id="dropdownMenu6" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   Filter
@@ -112,7 +112,7 @@ export function Search(props){
                     </div>
             </div>
             </div>
-           </Btn>
+           </Btn> */}
            </Filter>
            
         </Container>
