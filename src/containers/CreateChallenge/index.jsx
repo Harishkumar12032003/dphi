@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Navbar } from '../../components/button/navbar';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
@@ -25,6 +25,9 @@ import axios from 'axios';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { add } from '../../components/dataHandler';
+
+import ImageUploading from 'react-images-uploading';
+import { width } from '@mui/system';
 
 const Head=styled.div`
     width: 100%;
@@ -126,6 +129,8 @@ const Text3=styled.div`
     margin-right:10px;
 `;
 
+
+
 const TextAreas=styled.div`
     margin-right:500px;
     margin-bottom:30px;
@@ -136,6 +141,7 @@ const Level=styled.div`
     margin-top:20px;
     width:80px;
 `;
+
 
 
 export function Create(props){
@@ -149,7 +155,21 @@ export function Create(props){
     const[statustime,processStatusTime]=useState("starts on");
     const[status,processStatus]=useState("upcoming");
     const[unit,processUnit]=useState("date");
-  
+    const[description,processDescription]=useState("");
+    const[start_Date,processStartDate]=useState("");
+    const[end_Date,processEndDate]=useState("");
+    const[images, setImages] = React.useState([]);
+    const maxNumber = 1;
+
+    const onChange = (imageList, addUpdateIndex) => {
+        // data for submit
+        //console.log('here')
+        //console.log(imageList, addUpdateIndex);
+        //console.log(imageList[0]["data_url"])
+        processThumbnail(imageList[0]["data_url"]);
+        setImages(imageList);
+    };
+    let navigate = useNavigate()
     // const getHackInfo=()=>{
         
        
@@ -172,7 +192,8 @@ export function Create(props){
     //   getHackInfo();
     // },[true])
   
-    const updateHack=()=>{
+    const updateHack=(e)=>{
+        e.preventDefault()
         let currentDate = new Date();
         let time1 = currentDate.getHours() + ":" + currentDate.getMinutes() + ":" + currentDate.getSeconds();
       var hackInfo={
@@ -182,15 +203,20 @@ export function Create(props){
         "time":time,
         "status":time1<time?"upcoming":"past",
         "unit":"date             time",
-        "statustime":status=="upcoming"?"starts on":"ended on"
+        "statustime":status=="upcoming"?"starts on":"ended on",
+        "description":description,
+        "start_date":start_Date,
+        "end_date":end_Date
       };
     add(hackInfo); 
     //   const url="http://localhost:9000/employees/";
     //   axios.post(url,hackInfo).then(response=>{
     //     processMessage((title+"details updated"));
     //   })
-  
+    navigate('/')
     }
+
+    
 
     return<PageContainer>
     <Navbar></Navbar>
@@ -199,8 +225,8 @@ export function Create(props){
             Challenge Details  
         </HeadData>
     </Head>
-
     <FormInput>
+    
         <Text1>
           <Text>
           <label for="fname">Challenge Details</label>
@@ -209,7 +235,7 @@ export function Create(props){
             width="60"
             type="text" className='inputbox'
             value={title}
-            onChange={obj=>processTitle(obj.target.value)}/>
+            onChange={obj=>processTitle(obj.target.value)} required/>
 
         </Text>
         </Text1>
@@ -217,19 +243,24 @@ export function Create(props){
         
           <label >Start Date:</label>
           <br></br>
-          <input type="datetime-local" onChange={obj=>processTime(obj.target.value)}></input>
+          <input type="date" value={start_Date} onChange={obj=>processStartDate(obj.target.value)} required></input>
           <br></br>
           <br></br>
           <label >End Date:</label>
           
           <br></br>
-          <input type="datetime-local"></input>
+          <input type="date" value={end_Date} onChange={obj=>processEndDate(obj.target.value) } required></input>
         </Dates>
 
         <TextAreas>
         <p><label>Description</label></p>
 
-        <textarea id="w3review" rows="4" cols="50">
+        <textarea 
+         rows="4" cols="50"
+        value={description}
+        onChange={obj=>processDescription(obj.target.value)}
+        required
+        >
         
         </textarea>
         </TextAreas>
@@ -243,7 +274,40 @@ export function Create(props){
         <Btn>
         
             <Text3>
-            <input type="url" id="thumbnail" name="thumbnail" onChange={obj=>processThumbnail(obj.target.value)}></input>
+            
+            
+            <ImageUploading
+                multiple
+                value={images}
+                onChange={onChange}
+                maxNumber={maxNumber}
+                dataURLKey="data_url"  
+            >
+                {({imageList,onImageUpload, onImageRemoveAll, onImageUpdate, onImageRemove, isDragging, dragProps,}) => (
+                // write your building UI
+                <div className="upload__image-wrapper">
+                    <button 
+                    style={isDragging ? { color: 'red' } : undefined}
+                    onClick={onImageUpload}
+                    {...dragProps}
+                    >
+                    Click or Drop here
+                    </button>
+                    {imageList.map((image, index) => (
+                        
+                        <div key={index} className="image-item">
+                            <img src={image['data_url']} alt="" width="100" />
+                            
+                            <div className="image-item__btn-wrapper">
+                            <button onClick={() => onImageUpdate(index)}>Update</button>
+                            <button onClick={() => onImageRemove(index)}>Remove</button>
+                            </div>
+                        </div>
+            ))}
+                </div>
+        )}
+      </ImageUploading>
+     
             </Text3>  
        
         </Btn>
@@ -251,7 +315,7 @@ export function Create(props){
         <Level>
             <label >Level</label>
             <br></br>
-            <select name="level" id="level" value={level} onChange={obj=>processLevel(obj.target.value)} >
+            <select value={level} onChange={obj=>processLevel(obj.target.value)} required>
               <option value="easy" >Easy</option>
               <option value="medium" >Medium</option>
               <option value="hard" >Hard</option>
@@ -260,19 +324,20 @@ export function Create(props){
 
         <Text>
             <Btns>
-                <Link style={{textDecoration: 'none',color:"#FFFFFF"}} to="/dphi">
+                {/* <Link style={{textDecoration: 'none',color:"#FFFFFF"}} to="/"> */}
                
                 
-            <button onClick={updateHack} style={{backgroundColor:'#44924C',border:"none"}}>submit</button>
+            <button onClick={updateHack}style={{backgroundColor:'#44924C',border:"none"}}>submit</button>
         
-                </Link>
+                {/* </Link> */}
             </Btns>
         </Text>
 
      
         
 
-    </FormInput>    
+      
+    </FormInput>
     </PageContainer>
 
 }

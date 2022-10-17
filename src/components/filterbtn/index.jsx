@@ -1,4 +1,5 @@
 import * as React from 'react';
+import {useDispatch} from 'react-redux';
 import ListSubheader from '@mui/material/ListSubheader';
 import List from '@mui/material/List';
 import ListItemButton from '@mui/material/ListItemButton';
@@ -11,12 +12,13 @@ import SendIcon from '@mui/icons-material/Send';
 import ExpandLess from '@mui/icons-material/ExpandLess';
 import ExpandMore from '@mui/icons-material/ExpandMore';
 import StarBorder from '@mui/icons-material/StarBorder';
-
+import { updateFilter,deleteFilter } from '../../redux/filter';
 export default function FilterBtn() {
   const [open, setOpen] = React.useState(true);
-
+  const dispatch=useDispatch();
   const handleClick = () => {
     setOpen(!open);
+    console.log('here')
   };
 
   return (

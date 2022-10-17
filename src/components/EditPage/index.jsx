@@ -15,7 +15,7 @@ import { useEffect } from 'react';
 import { edit, getIdData } from '../dataHandler';
 import FormControl from '@mui/joy/FormControl';
 import FormLabel from '@mui/joy/FormLabel';
-
+import ImageUploading from 'react-images-uploading';
 import CloudIcon from '@mui/icons-material/CloudUploadRounded';
 import { red } from '@mui/material/colors';
 
@@ -140,6 +140,17 @@ export function Edit(props){
   const[statustime,processStatusTime]=useState("starts on");
   const[status,processStatus]=useState("upcoming");
   const[unit,processUnit]=useState("date");
+  const[description,processDescription]=useState("");
+  const[start_Date,processStartDate]=useState("");
+  const[end_Date,processEndDate]=useState("");
+  const[images, setImages] = React.useState([]);
+    const maxNumber = 1;
+
+    const onChange = (imageList, addUpdateIndex) => {
+        // data for submit
+        console.log(imageList, addUpdateIndex);
+        setImages(imageList);
+    };
 
   const getHackInfo=()=>{
       
@@ -155,6 +166,9 @@ export function Edit(props){
       processStatusTime(data.time>time?"starts on":"ended on");
       processStatus("upcoming");
       processUnit("days");
+      processDescription(data.description);
+      processEndDate(data.end_date);
+      processStartDate(data.start_date);
     // }, {
      
     // })
@@ -174,7 +188,10 @@ export function Edit(props){
       "time":time,
       "status":time1<time?"upcoming":"past",
       "unit":"date             time",
-      "statustime":status=="upcoming"?"starts on":"ended on"
+      "statustime":status=="upcoming"?"starts on":"ended on",
+      "description":description,
+      "start_date":start_Date,
+      "end_date":end_Date
     };
     edit(hackInfo,id);
     // const url="http://localhost:9000/employees/"+id;
@@ -209,20 +226,24 @@ export function Edit(props){
       
         <label >Start Date:</label>
         <br></br>
-        <input type="datetime-local" onChange={obj=>processTime(obj.target.value)}></input>
+        <input type="datetime-local" value={time} onChange={obj=>processTime(obj.target.value)} ></input>
         <br></br>
         <br></br>
         <label >End Date:</label>
         
         <br></br>
-        <input type="datetime-local"></input>
+        <input type="datetime-local" value={end_Date} onChange={obj=>processEndDate(obj.target.value) }></input>
       </Dates>
 
       <TextAreas>
-      <p><label for="w3review">Description</label></p>
+      <p><label>Description</label></p>
 
-      <textarea id="w3review" name="w3review" rows="4" cols="50">
-      
+      <textarea 
+      id="w3review" rows="4" cols="50"
+      value={description}
+      onChange={obj=>processDescription(obj.target.value)}
+      >
+
       </textarea>
       </TextAreas>
     
@@ -235,6 +256,38 @@ export function Edit(props){
           <Text3>
           
           <input type="url" id="thumbnail" name="thumbnail" onChange={obj=>processThumbnail(obj.target.value)}></input>
+          <ImageUploading
+                multiple
+                value={images}
+                onChange={onChange}
+                maxNumber={maxNumber}
+                dataURLKey="data_url"  
+            >
+                {({imageList,onImageUpload, onImageRemoveAll, onImageUpdate, onImageRemove, isDragging, dragProps,}) => (
+                // write your building UI
+                <div className="upload__image-wrapper">
+                    <button 
+                    style={isDragging ? { color: 'red' } : undefined}
+                    onClick={onImageUpload}
+                    {...dragProps}
+                    >
+                    Click or Drop here
+                    </button>
+                    {imageList.map((image, index) => (
+                        
+                        <div key={index} className="image-item">
+                            <img src={image['data_url']} alt="" width="100" />
+                            {console.log(image['data_url'])}
+                            <div className="image-item__btn-wrapper">
+                            <button onClick={() => onImageUpdate(index)}>Update</button>
+                            <button onClick={() => onImageRemove(index)}>Remove</button>
+                            </div>
+                        </div>
+            ))}
+                </div>
+        )}
+      </ImageUploading>
+
           </Text3>  
      
       </Btn>
@@ -251,7 +304,7 @@ export function Edit(props){
 
       <Text>
           <Btns>
-              <Link style={{textDecoration: 'none',color:"#FFFFFF"}} to="/dphi">
+              <Link style={{textDecoration: 'none',color:"#FFFFFF"}} to="/">
              
               <th colSpan={2}>
           <button onClick={updateHack} style={{backgroundColor:'#44924C',border:"none"}}>submit</button>

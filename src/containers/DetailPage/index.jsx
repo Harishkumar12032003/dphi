@@ -11,6 +11,8 @@ import { getData } from '../../components/dataHandler';
 
 const Container=styled.div`
     padding-bottom:50px;
+    width:100%;
+    overflow:hidden;
 `;
 
 const TopContainer=styled.div`
@@ -207,7 +209,7 @@ export function Detail(props){
                 <Margins>
                     <AccessTimeIcon/>
                     <Texts>
-                    Starts in {data.time} (India Standard Time) 
+                    Starts in {data.start_date} (India Standard Time) 
                     </Texts>
                 </Margins>
                  
@@ -238,7 +240,17 @@ export function Detail(props){
         </MiddleContainer>
 
         <Description>
-        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptate, fugiat laudantium suscipit mollitia magni accusamus facilis placeat accusantium sed doloribus dicta odio! Ex voluptatum rem omnis reiciendis illo tempora sunt.
+            {data.description}
+        </Description>    
+        
+        </div> : <div>Data not found</div>}
+    </Container>
+}
+
+
+
+/*
+Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptate, fugiat laudantium suscipit mollitia magni accusamus facilis placeat accusantium sed doloribus dicta odio! Ex voluptatum rem omnis reiciendis illo tempora sunt.
         </Description>
         <Description>
         Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laborum, facere modi. Praesentium animi, consectetur velit, dolorem impedit iusto iure qui ullam provident harum possimus officiis, commodi explicabo adipisci doloribus ducimus!
@@ -246,6 +258,4 @@ export function Detail(props){
         <Description>
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas eaque reiciendis impedit blanditiis explicabo recusandae, neque voluptate sapiente distinctio vel? Similique, repudiandae. Illum, quis dolor repellat quo ipsa quod officiis?
         </Description>
-        </div> : <div>Data not found</div>}
-    </Container>
-}
+        */

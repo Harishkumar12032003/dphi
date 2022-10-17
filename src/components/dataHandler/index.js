@@ -8,7 +8,11 @@ let data =
             "statustime":"starts in",
             "time":"00 : 15 : 22",
             "unit":"Days  Hours  Mins",
-            "level":"easy"
+            "level":"easy",
+            "description":" This is the deafult description:Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+            "start_date":"10-19-2022",
+            "end_date":"18-10-2022 ",
+            "images":""
         },
     
         {
@@ -19,7 +23,11 @@ let data =
             "statustime":"starts in",
             "time":"00  :  12  :  34",
             "unit":"Days  Hours  Mins",
-            "level":"easy"
+            "level":"easy",
+            "description":"This is the deafult description:Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. ",
+            "start_date":"10-19-2022",
+            "end_date":"10-18-2022 ",
+            "images":""
         },
     
         {
@@ -30,7 +38,11 @@ let data =
             "statustime":"ends in",
             "time":"01 : 17 : 10",
             "unit":"Days  Hours  Mins",
-            "level":"hard"
+            "level":"hard",
+            "description":" This is the deafult description:Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+            "start_date":"10-19-2022",
+            "end_date":"10-18-2022 ",
+            "images":""
         },
     
         {
@@ -41,7 +53,11 @@ let data =
             "statustime":"ends in",
             "time":"00 : 11 : 27",
             "unit":"Days  Hours  Mins",
-            "level":"medium"
+            "level":"medium",
+            "description":" This is the deafult description:Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+            "start_date":"10-19-2022",
+            "end_date":"10-19-2022 ",
+            "images":""
         },
     
         {
@@ -52,7 +68,11 @@ let data =
             "statustime":"ended on",
             "time":"16th May'22 09:00 PM",
             "unit":"",
-            "level":"easy"
+            "level":"easy",
+            "description":" This is the deafult description:Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+            "start_date":"10-19-2022",
+            "end_date":"10-19-2022 ",
+            "images":""
         },
     
         {
@@ -63,7 +83,11 @@ let data =
             "statustime":"ended on",
             "time":"16th May'22 09:00 PM",
             "unit":"",
-            "level":"easy"
+            "level":"easy",
+            "description":"This is the deafult description:Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. ",
+            "start_date":"10-19-2022",
+            "end_date":"10-18-2022 ",
+            "images":""
         }
     ]
 let id = 7;
@@ -71,7 +95,7 @@ export const add = (newObj) =>{
     newObj["id"] = id;
 
     data.push(newObj);
-    //console.log(data);
+    console.log(data);
     id++;
 }    
 

@@ -1,6 +1,6 @@
 import React,{useState,useEffect} from "react";
 import styled from "styled-components";
-
+import Countdown from 'react-countdown';
 import HackImage1 from "../../images/assets/cardimage/Group 1000002466.png";
 import ButtonIcons from "../status";
 import IconButtons from "../participatebtn";
@@ -176,6 +176,11 @@ export function HackCard(props) {
 
     },[name])
 
+    
+
+        
+        
+    
   
 
   return (
@@ -215,7 +220,20 @@ export function HackCard(props) {
         
         
         items.map((elem) => {
-            console.log(elem.title);
+            // console.log(elem.title);
+            // console.log(new Date());
+            const curr_time = Date.parse(new Date());
+            const start_time=Date.parse(elem.start_date);
+            const count=start_time-curr_time;
+            //console.log(start_time-curr_time);
+            //timer logic
+            // const date1 = new Date(elem.start_date);
+            // const date2 = new Date();
+            // console.log(date2);
+            // const diffTime = Math.abs(date2 - date1);
+            // console.log(diffTime);
+         
+          
               if(elem.title!=undefined) {
                 return(
                     <div key={elem.id}>
@@ -236,6 +254,11 @@ export function HackCard(props) {
                                {elem.statustime}
                             </Starts>
                             <h4 style={{ margin: 3,marginTop:5 ,color:'#454545' }}>{elem.time}</h4>
+                           <h4>
+
+                                <Countdown date={Date.now() + count} />
+
+                           </h4>
                             <TimeUnit>{elem.unit}</TimeUnit>
 
                             <Participate>
