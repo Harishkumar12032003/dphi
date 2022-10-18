@@ -271,8 +271,8 @@ export function Create(props){
     const[status,processStatus]=useState("upcoming");
     const[unit,processUnit]=useState("date");
     const[description,processDescription]=useState("");
-    const[start_Date,processStartDate]=useState("");
-    const[end_Date,processEndDate]=useState("");
+    const[start_date,processStartDate]=useState("");
+    const[end_date,processEndDate]=useState("");
     const[images, setImages] = React.useState([]);
     const[show,setShow]=useState("");
     const maxNumber = 1;
@@ -313,19 +313,18 @@ export function Create(props){
   
     const updateHack=(e)=>{
         e.preventDefault()
-        let currentDate = new Date();
-        let time1 = currentDate.getHours() + ":" + currentDate.getMinutes() + ":" + currentDate.getSeconds();
+        let time1 = Date.parse(new Date());
       var hackInfo={
         "title":title,
         "level":level,
         "thumbnail":thumbnail,
         "time":time,
-        "status":(time1<time)?"past":"upcoming",
+        "status":time1>Date.parse(end_date)?"past":time1>Date.parse(start_date)?"active":"upcoming",
         "unit":"date             time",
         "statustime":status=="upcoming"?"starts on":"ended on",
         "description":description,
-        "start_date":start_Date,
-        "end_date":end_Date
+        "start_date":start_date,
+        "end_date":end_date
       };
     add(hackInfo); 
     //   const url="http://localhost:9000/employees/";
@@ -364,13 +363,13 @@ export function Create(props){
         
           <label style={{marginRight:"250px",marginBottom:"15px",color:" #333333",fontWeight:"500"}}>Start Date:</label>
           <br></br>
-          <input type="date" value={start_Date} onChange={obj=>processStartDate(obj.target.value)} style={{marginLeft:"75px",width:"400px"}} required></input>
+          <input type="date" value={start_date} onChange={obj=>processStartDate(obj.target.value)} style={{marginLeft:"75px",width:"400px"}} required></input>
           <br></br>
           <br></br>
           <label style={{marginRight:"250px",marginBottom:"15px",color:" #333333",fontWeight:"500"}}>End Date:</label>
           
           <br></br>
-          <input type="date" value={end_Date} onChange={obj=>processEndDate(obj.target.value) } style={{marginLeft:"75px",width:"400px"}} required></input>
+          <input type="date" value={end_date} onChange={obj=>processEndDate(obj.target.value) } style={{marginLeft:"75px",width:"400px"}} required></input>
         </Dates>
 
         <TextAreas>
@@ -450,7 +449,7 @@ export function Create(props){
                 
             {/* <button onClick={updateHack}style={{backgroundColor:'#44924C',border:"none"}}>submit</button> */}
                 
-            <button type="submit" onClick={updateHack} style={{backgroundColor:'#44924C',border:"none"}}  disabled={(title===''?true:false)||(description===''?true:false)||(thumbnail===''?true:false)||(start_Date===''?true:false)||(end_Date===''?true:false)}>submit</button>
+            <button type="submit" onClick={updateHack} style={{backgroundColor:'#44924C',border:"none"}}  disabled={(title===''?true:false)||(description===''?true:false)||(thumbnail===''?true:false)||(start_date===''?true:false)||(end_date===''?true:false)}>submit</button>
 
                 {/* </Link> */}
             </Btns>

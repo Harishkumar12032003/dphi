@@ -191,14 +191,14 @@ export function Edit(props){
 
   const updateHack=(e)=>{
     e.preventDefault()
-      let currentDate = new Date();
-      let time1 = currentDate.getHours() + ":" + currentDate.getMinutes() + ":" + currentDate.getSeconds();
+      
+      let time1 = Date.parse(new Date());
     var hackInfo={
       "title":title,
       "level":level,
       "thumbnail":thumbnail,
       "time":time,
-      "status":time1<time?"past":"upcoming",
+      "status":time1>Date.parse(end_date)?"past":time1>Date.parse(start_date)?"active":"upcoming",
       "unit":"date             time",
       "statustime":status=="upcoming"?"starts on":"ended on",
       "description":description,
