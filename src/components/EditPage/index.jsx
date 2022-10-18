@@ -44,12 +44,14 @@ const HeadData=styled.div`
 `;
 
 const FormInput=styled.div`
-    padding:50px;
+    padding-top:100px;
+    padding:15px;
+    padding-bottom:100px;
     align-items:left;
 `;
 
 const Dates=styled.div`
-    margin:40px;
+    
     margin-right:740px;
 `;
 
@@ -61,7 +63,7 @@ const PageContainer=styled.div`
 `;
 
 const Text=styled.div`
-   margin:40px;
+ margin-left:40px;
 `;
 
 const Text2=styled.div`
@@ -76,7 +78,7 @@ const Text2=styled.div`
 
 
 const Text1=styled.div`
-    margin-top:30px;
+    
     margin-right:700px;
     margin-bottom:40px;
 `;
@@ -88,7 +90,7 @@ const Name=styled.div`
 `;
 
 const Btn=styled.div`
-   background:#D8D8D8;
+   
    border-radius:10px;
    width:50px;
    
@@ -107,6 +109,7 @@ const Btns=styled.div`
    padding-top:3px;
    border-radius:10px;
    margin-top:50px;
+   margin-left:30px;
 `;
 
 const Text3=styled.div`
@@ -143,9 +146,10 @@ export function Edit(props){
   const[status,processStatus]=useState("upcoming");
   const[unit,processUnit]=useState("date");
   const[description,processDescription]=useState("");
-  const[start_Date,processStartDate]=useState("");
-  const[end_Date,processEndDate]=useState("");
+  const[start_date,processStartDate]=useState();
+  const[end_date,processEndDate]=useState();
   const[images, setImages] = React.useState([]);
+  
   
     const maxNumber = 1;
 
@@ -164,6 +168,7 @@ export function Edit(props){
     //const url="http://localhost:9000/employees/"  + id;
     const data = getIdData(id);
     console.log(data)
+    
     // axios.get(url).then(response=>{
       processLevel(data.level);
       processThumbnail(data.thumbnail);
@@ -193,12 +198,12 @@ export function Edit(props){
       "level":level,
       "thumbnail":thumbnail,
       "time":time,
-      "status":time1<time?"upcoming":"past",
+      "status":time1<time?"past":"upcoming",
       "unit":"date             time",
       "statustime":status=="upcoming"?"starts on":"ended on",
       "description":description,
-      "start_date":start_Date,
-      "end_date":end_Date
+      "start_date":start_date,
+      "end_date":end_date
     };
     edit(hackInfo,id);
     // const url="http://localhost:9000/employees/"+id;
@@ -219,10 +224,11 @@ export function Edit(props){
   <FormInput>
       <Text1>
         <Text>
-        <label for="fname">Challenge Details</label>
+        <label for="fname" style={{marginRight:"280px",marginTop:"28px",marginBottom:"15px",color:"#000000",fontWeight:"500"}}>Challenge Name</label>
         <br></br>
           <input
-          width="60"
+          width="10"
+          size="50"
           type="text" className='inputbox'
           value={title}
           onChange={obj=>processTitle(obj.target.value)}/>
@@ -231,22 +237,23 @@ export function Edit(props){
       </Text1>
       <Dates>
       
-      <label >Start Date:</label>
+      <label style={{marginRight:"250px",marginBottom:"15px",color:" #333333",fontWeight:"500"}}>Start Date:</label>
           <br></br>
-          <input type="date" value={start_Date} onChange={obj=>processStartDate(obj.target.value)} required></input>
+          <input type="date" value={start_date}  onChange={obj=>processStartDate(obj.target.value)} style={{marginLeft:"75px",width:"400px"}} required></input>
           <br></br>
           <br></br>
-          <label >End Date:</label>
+          <label style={{marginRight:"250px",marginBottom:"15px",color:" #333333",fontWeight:"500"}}>End Date:</label>
           
           <br></br>
-          <input type="date" value={end_Date} onChange={obj=>processEndDate(obj.target.value) } required></input>
+          <input type="date" value={end_date} onChange={obj=>processEndDate(obj.target.value) }  style={{marginLeft:"75px",width:"400px",marginBottom:"15px"}} required></input>
       </Dates>
 
       <TextAreas>
-      <p><label>Description</label></p>
+      <p><label style={{marginRight:"480px",marginBottom:"0px",marginTop:"20px",color:" #333333",fontWeight:"500"}}>Description</label></p>
 
       <textarea 
-         rows="4" cols="50"
+        style={{marginLeft:"50px",marginBottom:"0px"}}
+        rows="8" cols="80"
         value={description}
         onChange={obj=>processDescription(obj.target.value)}
         required
@@ -256,13 +263,13 @@ export function Edit(props){
     
 
       <Name>
-            <label  >Image:</label> 
+            <label  style={{marginRight:"280px",marginBottom:"15px",color:" #333333",fontWeight:"500"}}>Image:</label> 
           
         </Name>
 
         <Btn>
         
-            <Text3>
+            <Text3 style={{marginLeft:"10px",marginBottom:"15px",size:"60"}}>
             
             
             <ImageUploading
@@ -274,13 +281,13 @@ export function Edit(props){
             >
                 {({imageList,onImageUpload, onImageRemoveAll, onImageUpdate, onImageRemove, isDragging, dragProps,}) => (
                 // write your building UI
-                <div className="upload__image-wrapper">
+                <div className="upload__image-wrapper" style={{textAlign:"center"}}>
                     <button 
                     style={isDragging ? { color: 'red' } : undefined}
                     onClick={onImageUpload}
                     {...dragProps}
                     >
-                    Click or Drop here
+                    Upload <CloudIcon ></CloudIcon>
                     </button>
                     {imageList.map((image, index) => (
                         
@@ -301,9 +308,9 @@ export function Edit(props){
        
         </Btn>
       <Level>
-          <label for="level">Level</label>
+          <label for="level" style={{marginLeft:"30px",marginBottom:"15px",color:" #333333",fontWeight:"500"}}>Level</label>
           <br></br>
-          <select name="level" id="level" value={level} onChange={obj=>processLevel(obj.target.value)} >
+          <select name="level" id="level" value={level} onChange={obj=>processLevel(obj.target.value)}  style={{marginLeft:"35px",marginBottom:"15px",width:"200px",height:"35px"}}>
             <option value="easy" >Easy</option>
             <option value="medium" >Medium</option>
             <option value="hard" >Hard</option>
@@ -315,7 +322,7 @@ export function Edit(props){
               {/* <Link style={{textDecoration: 'none',color:"#FFFFFF"}} to="/"> */}
              
             
-          <button onClick={updateHack} style={{backgroundColor:'#44924C',border:"none"}}>submit</button>
+          <button onClick={updateHack} style={{backgroundColor:'#44924C',border:"none"}}>Save Changes</button>
       
               {/* </Link> */}
           </Btns>

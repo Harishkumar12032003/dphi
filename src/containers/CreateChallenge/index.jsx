@@ -29,6 +29,120 @@ import { add } from '../../components/dataHandler';
 import ImageUploading from 'react-images-uploading';
 import { width } from '@mui/system';
 
+// const Head=styled.div`
+//     width: 100%;
+//     height: 107px;
+
+//     background: #F8F9FD;
+//     margin-bottom:0px;
+// `;
+
+// const HeadData=styled.div`
+//     width: 210px;
+//     height: 29px;
+//     margin-left:77px;
+//     padding-top: 41px;
+
+//     font-family: 'Inter';
+//     font-style: normal;
+//     font-weight:700;
+//     font-size: 26px;
+//     line-height: 29px;
+    
+//     color: #000000;
+// `;
+
+// const FormInput=styled.div`
+//     padding:50px;
+//     align-items:left;
+// `;
+
+// const Dates=styled.div`
+//     margin:40px;
+//     margin-right:740px;
+// `;
+
+// const PageContainer=styled.div`
+//     display:flex;
+//     flex-direction:column;
+//     align-items:flex-start;
+    
+// `;
+
+// const Text=styled.div`
+//    margin:40px;
+//    width:180px;
+// `;
+
+// const Text2=styled.div`
+//    margin-left:40px;
+//    margin-top:5px;
+//    margin-bottom:0px;
+//    padding:0px;
+//    border: 2px solid grey;
+//    border-radius: 5px;
+// `;
+
+
+
+// const Text1=styled.div`
+//     margin-top:30px;
+//     margin-right:700px;
+//     margin-bottom:40px;
+// `;
+
+// const Name=styled.div`
+//     padding-left:0px;
+//     padding-bottom:0px;
+//     margin-right:730px;
+// `;
+
+// const Btn=styled.div`
+ 
+//    border-radius:10px;
+//    width:50px;
+   
+//    margin-top:10px;
+//    margin-left:40px;
+//    color:#666666;
+  
+// `;
+
+
+
+// const Btns=styled.div`
+//    background:#44924C;
+//    width:160px;
+//    height:35px;
+//    padding-top:3px;
+//    border-radius:10px;
+//    margin-top:50px;
+// `;
+
+// const Text3=styled.div`
+//     font-family: 'Inter';
+//     font-style: normal;
+//     font-weight: 500;
+//     font-size: 18px;
+//     line-height: 22px;
+//     color: #666666;
+//     margin-right:10px;
+//     width:150px;
+// `;
+
+
+
+// const TextAreas=styled.div`
+//     margin-right:500px;
+//     margin-bottom:30px;
+// `;
+
+// const Level=styled.div`
+//     margin-left:40px;
+//     margin-top:20px;
+//     width:80px;
+// `;
+
 const Head=styled.div`
     width: 100%;
     height: 107px;
@@ -53,12 +167,14 @@ const HeadData=styled.div`
 `;
 
 const FormInput=styled.div`
-    padding:50px;
+    padding-top:100px;
+    padding:15px;
+    padding-bottom:100px;
     align-items:left;
 `;
 
 const Dates=styled.div`
-    margin:40px;
+    
     margin-right:740px;
 `;
 
@@ -70,8 +186,7 @@ const PageContainer=styled.div`
 `;
 
 const Text=styled.div`
-   margin:40px;
-   width:180px;
+ margin-left:40px;
 `;
 
 const Text2=styled.div`
@@ -86,7 +201,7 @@ const Text2=styled.div`
 
 
 const Text1=styled.div`
-    margin-top:30px;
+    
     margin-right:700px;
     margin-bottom:40px;
 `;
@@ -98,7 +213,7 @@ const Name=styled.div`
 `;
 
 const Btn=styled.div`
- 
+   
    border-radius:10px;
    width:50px;
    
@@ -117,6 +232,7 @@ const Btns=styled.div`
    padding-top:3px;
    border-radius:10px;
    margin-top:50px;
+   margin-left:30px;
 `;
 
 const Text3=styled.div`
@@ -129,8 +245,6 @@ const Text3=styled.div`
     margin-right:10px;
     width:150px;
 `;
-
-
 
 const TextAreas=styled.div`
     margin-right:500px;
@@ -234,10 +348,12 @@ export function Create(props){
     
         <Text1>
           <Text>
-          <label for="fname">Challenge Details</label>
+          <label for="fname" style={{marginRight:"280px",marginTop:"28px",marginBottom:"15px",color:"#000000",fontWeight:"500",width:"150px"}}>Challenge Name</label>
           <br></br>
             <input
             width="60"
+           
+            size="50"
             type="text" className='inputbox'
             value={title}
             onChange={obj=>processTitle(obj.target.value)} required/>
@@ -246,22 +362,23 @@ export function Create(props){
         </Text1>
         <Dates>
         
-          <label >Start Date:</label>
+          <label style={{marginRight:"250px",marginBottom:"15px",color:" #333333",fontWeight:"500"}}>Start Date:</label>
           <br></br>
-          <input type="date" value={start_Date} onChange={obj=>processStartDate(obj.target.value)} required></input>
+          <input type="date" value={start_Date} onChange={obj=>processStartDate(obj.target.value)} style={{marginLeft:"75px",width:"400px"}} required></input>
           <br></br>
           <br></br>
-          <label >End Date:</label>
+          <label style={{marginRight:"250px",marginBottom:"15px",color:" #333333",fontWeight:"500"}}>End Date:</label>
           
           <br></br>
-          <input type="date" value={end_Date} onChange={obj=>processEndDate(obj.target.value) } required></input>
+          <input type="date" value={end_Date} onChange={obj=>processEndDate(obj.target.value) } style={{marginLeft:"75px",width:"400px"}} required></input>
         </Dates>
 
         <TextAreas>
-        <p><label>Description</label></p>
+        <p><label style={{marginRight:"480px",marginBottom:"0px",marginTop:"20px",color:" #333333",fontWeight:"500"}}>Description</label></p>
 
         <textarea 
-         rows="4" cols="50"
+         style={{marginLeft:"50px",marginBottom:"0px"}}
+         rows="8" cols="80"
         value={description}
         onChange={obj=>processDescription(obj.target.value)}
         required
@@ -272,12 +389,12 @@ export function Create(props){
       
 
        <Name>
-            <label  >Image:</label> 
+            <label style={{marginRight:"280px",marginBottom:"15px",color:" #333333",fontWeight:"500"}} >Image:</label> 
         </Name>
 
         <Btn>
         
-            <Text3>
+            <Text3 style={{marginLeft:"10px",marginBottom:"15px",size:"60"}}>
             
             
             <ImageUploading
@@ -291,11 +408,11 @@ export function Create(props){
                 // write your building UI
                 <div className="upload__image-wrapper">
                     <button 
-                    style={isDragging ? { color: 'red' } : undefined}
+                    style={{width:"190px",marginLeft:"30px",justifyContent:"space-between",border:"1px solid black",borderRadius:"8px",paddingBottom:"4px",paddingTop:"1px"}}
                     onClick={onImageUpload}
                     {...dragProps}
                     >
-                    Upload Image here
+                    Upload <CloudIcon ></CloudIcon>
                     </button>
                     {imageList.map((image, index) => (
                         
@@ -317,9 +434,9 @@ export function Create(props){
         </Btn>
 
         <Level>
-            <label >Level</label>
+            <label style={{marginLeft:"30px",marginBottom:"15px",color:" #333333",fontWeight:"500"}}>Level</label>
             <br></br>
-            <select value={level} onChange={obj=>processLevel(obj.target.value)} required>
+            <select value={level} onChange={obj=>processLevel(obj.target.value)} style={{marginLeft:"35px",marginBottom:"15px",width:"200px",height:"35px"}} required>
               <option value="easy" >Easy</option>
               <option value="medium" >Medium</option>
               <option value="hard" >Hard</option>
@@ -333,7 +450,7 @@ export function Create(props){
                 
             {/* <button onClick={updateHack}style={{backgroundColor:'#44924C',border:"none"}}>submit</button> */}
                 
-            <button type="submit" onClick={updateHack} style={{backgroundColor:'#44924C',border:"none"}} disabled={(title===''?true:false)||(description===''?true:false)||(thumbnail===''?true:false)||(start_Date===''?true:false)||(end_Date===''?true:false)}>submit</button>
+            <button type="submit" onClick={updateHack} style={{backgroundColor:'#44924C',border:"none"}}  disabled={(title===''?true:false)||(description===''?true:false)||(thumbnail===''?true:false)||(start_Date===''?true:false)||(end_Date===''?true:false)}>submit</button>
 
                 {/* </Link> */}
             </Btns>

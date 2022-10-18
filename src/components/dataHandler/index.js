@@ -10,8 +10,8 @@ let data =
             "unit":"Days  Hours  Mins",
             "level":"easy",
             "description":" This is the deafult description:Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
-            "start_date":"10-22-2022",
-            "end_date":"18-25-2022 ",
+            "start_date":"2022-10-25",
+            "end_date":"2022-10-28",
             "images":""
         },
     
@@ -25,8 +25,8 @@ let data =
             "unit":"Days  Hours  Mins",
             "level":"easy",
             "description":"This is the deafult description:Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. ",
-            "start_date":"10-24-2022",
-            "end_date":"10-25-2022 ",
+            "start_date":"2022-10-27",
+            "end_date":"2022-10-28",
             "images":""
         },
     
@@ -40,8 +40,8 @@ let data =
             "unit":"Days  Hours  Mins",
             "level":"hard",
             "description":" This is the deafult description:Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
-            "start_date":"10-12-2022",
-            "end_date":"10-26-2022 ",
+            "start_date":"2022-10-10",
+            "end_date":"2022-10-28",
             "images":""
         },
     
@@ -55,8 +55,8 @@ let data =
             "unit":"Days  Hours  Mins",
             "level":"medium",
             "description":" This is the deafult description:Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
-            "start_date":"10-10-2022",
-            "end_date":"10-28-2022 ",
+            "start_date":"2022-10-12",
+            "end_date":"2022-10-26",
             "images":""
         },
     
@@ -70,8 +70,8 @@ let data =
             "unit":"",
             "level":"easy",
             "description":" This is the deafult description:Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
-            "start_date":"10-13-2022",
-            "end_date":"10-15-2022 ",
+            "start_date":"2022-10-10",
+            "end_date":"2022-10-12",
             "images":""
         },
     
@@ -85,8 +85,8 @@ let data =
             "unit":"",
             "level":"easy",
             "description":"This is the deafult description:Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. ",
-            "start_date":"10-14-2022",
-            "end_date":"10-16-2022 ",
+            "start_date":"2022-10-8",
+            "end_date":"2022-10-13",
             "images":""
         }
     ]
